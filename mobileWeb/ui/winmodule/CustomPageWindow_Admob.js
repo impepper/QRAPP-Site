@@ -1,0 +1,1 @@
+function CustomPageWindow(){require("ti.admob");var a=Ti.UI.createWindow({backgroundColor:"white"});Ti.Geolocation.accuracy=Ti.Geolocation.ACCURACY_BEST;Ti.Geolocation.distanceFilter=0;Ti.Geolocation.purpose="To show you local ads, of course!";Ti.Geolocation.getCurrentPosition(function(){});return a}module.exports=CustomPageWindow;

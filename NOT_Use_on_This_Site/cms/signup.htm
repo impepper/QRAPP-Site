@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Create New Account</title>
+<link href="css/custom/header_logo.css" rel="stylesheet" type="text/css" />
+
+<link type="text/css" href="css/smoothness/jquery-ui-1.8.20.custom.css" rel="Stylesheet" />
+<script type="text/javascript" src="js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="js/cocoafish/cocoafish-1.2.min.js"></script>
+<script type="text/javascript" src="js/acs_sdk.js"></script>
+<script>
+$(function(){
+	$(':button').button();
+	$(':text').text();
+	$('#btn_create').bind('click',function(e){
+			sdk_user_create($('#new_useremail').val(),$('#new_userfirstname').val(),$('#new_userlastname').val(),$('#new_pass').val(),$('#new_pass_confirm').val(),false);
+		})
+	$('#apDiv_loginstatus',window.parent.frames['Frame_header'].document).html('Already a registered user? &nbsp;&nbsp; <a href="login.htm" target="Frame_content">Log In</a>');		
+})
+</script>
+</head>
+
+<body>
+
+<div class="container400">
+  <div class="header"></div>
+  <div class="content">
+    <h1>Creat New Account</h1>
+    <form id="form1" name="form1" method="post" action="">
+      <p>
+        <label for="new_useremail">eMail:</label>
+        <input type="text" name="new_useremail" id="new_useremail" />
+      </p>
+      <p>
+        <label for="new_userfirstname">First Name:</label>
+        <input type="text" name="new_userfirstname" id="new_userfirstname" />
+      </p>
+      <p>
+        <label for="new_userlastname">Last Name:</label>
+        <input type="text" name="new_userlastname" id="new_userlastname" />
+      </p>
+      <p>
+        <label for="new_pass">Passowrd:</label>
+        <input type="password" name="new_pass" id="new_pass" />
+      </p>
+      <p>
+        <label for="new_pass">reType:</label>
+        <input type="password" name="new_pass_confirm" id="new_pass_confirm" />
+      </p>
+      <p>
+        <input name="btn_create" type="button" id="btn_create" value="Creat My Account" />
+      </p>
+      
+    </form>
+    <p>&nbsp;</p>
+    <!-- end .content --></div>
+  <!-- end .container --></div>
+</body>
+</html>

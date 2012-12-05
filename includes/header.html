@@ -1,0 +1,49 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<?php
+	if (isset($_GET['lang']) && in_array($_GET['lang'],array('cht','en')))
+    {
+      require_once($_SERVER['DOCUMENT_ROOT']."/".$path_prefix."languages/".$_GET['lang'].".php");
+      //require_once("languages/".$_GET['lang'].".php");
+      $_SESSION["lang"]= $_GET['lang'];
+    } else {
+    	if (!isset($_SESSION["lang"])) {
+        $_SESSION["lang"]= "en";
+       };
+      require_once($_SERVER['DOCUMENT_ROOT']."/".$path_prefix."languages/".$_SESSION["lang"].".php");
+      //require_once("languages/".$_SESSION["lang"].".php");
+      
+    }; 
+?>
+
+<table width="100%" border="0" cellspacing="1" cellpadding="1">
+  <tr>
+    <td rowspan="2" width="250">
+      <div id="logo"><p><a href=<?php echo "'/".$path_prefix."index.php'" ?> ><img src=<?php echo "'/".$path_prefix."styles/images/header_logo.png'" ?> width="387" height="130" /></a></p></div>
+    </td>
+
+    
+    <td><div id="loginStatus">
+    <!-- Member Login Section -->
+      <?php
+
+      securePage($_SERVER['PHP_SELF']);
+      
+      //Links for logged in user
+      if(isUserLoggedIn()) {
+        echo "<a href='/".$path_prefix."app_admin.php'>". lang("SITE_LINKS_USER_APPS") ."</a>,&nbsp;<a href='/".$path_prefix."usr_settings.php'>". lang("SITE_LINKS_USER_SETTING") ."</a>,&nbsp;<a href='/".$path_prefix."usr_logout.php'>". lang("SITE_LINKS_LOGOUT") ."</a>";
+      } 
+      //Links for users not logged in
+      else {
+        //echo "<a href='/".$path_prefix."usr_login.php'>". lang("SITE_LINKS_LOGIN") ."</a>,&nbsp;<a href='/".$path_prefix."usr_signup.php'>". lang("SITE_LINKS_REGISTER") ."</a>";
+        echo "<a href='/".$path_prefix."usr_login.php'>". lang("SITE_LINKS_LOGIN") ."</a>";
+      }
+      ?>    
+    </div></td>
+    <!-- Language Selection-->
+    <td width="35"><form method="GET"><input type="hidden" name="lang" value="cht"><?php echo "<input type='image' src='/".$path_prefix."images/btn_cht.gif' name='image' />" ?></form></td><td width="35"><form method="GET"><input type="hidden" name="lang" value="en" /><?php echo "<input type='image' src='/".$path_prefix."images/btn_eng.gif' name='image' />" ?></form></td><td width="15"></td>
+  </tr>
+  <tr>
+    <td><div id="mainMenu"><!-- Menu Section  --></div></td>
+  </tr>
+        </table>

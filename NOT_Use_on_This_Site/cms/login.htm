@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>User LogIn</title>
+<link href="css/custom/header_logo.css" rel="stylesheet" type="text/css" />
+<link type="text/css" href="css/smoothness/jquery-ui-1.8.20.custom.css" rel="Stylesheet" />
+<script type="text/javascript" src="js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="js/cocoafish/cocoafish-1.2.min.js"></script>
+<script type="text/javascript" src="js/acs_sdk.js"></script>
+<script>
+$(function(){
+	sdk_user_logout(false);
+	$(':button').button()
+	$(':text').text()
+	$(':password').text()
+	$('#login_btn').bind('click',function(e){
+			sdk_user_login($('#login_username').val(),$('#login_password').val())
+	})
+
+	$('#apDiv_loginstatus',window.parent.frames['Frame_header'].document).html('<a href="login.htm" target="Frame_content">Log in</a>&nbsp;&nbsp;&nbsp;<a href="signup.htm" target="Frame_content">Sign Up</a>');	
+})
+</script>
+</head>
+
+<body>
+
+<div class="container400">
+  <div class="header"></div>
+  <div class="content">
+    <h1>User Login</h1>
+    <form id="form1" name="form1" method="post" action="">
+      <p>
+        <label for="login_username">Username:</label>
+      	<input name="login_username" type="text" id="login_username" value="" />
+      </p>
+      <p>
+        <label for="login_password">Password:</label>
+
+        <input name="login_password" type="password" id="login_password" value="" />
+      </p>
+      <p>
+        <input type="button" name="login_btn" id="login_btn" value="Log In" />
+      </p>
+    </form>
+    <p>Not a registered user? <a href="signup.htm">SignUp</a>    <!-- end .content --></p>
+  </div>
+  <!-- end .container --></div>
+</body>
+</html>

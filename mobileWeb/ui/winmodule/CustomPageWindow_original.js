@@ -1,0 +1,1 @@
+function CustomPageWindow(c,d,a,e,b){a=Ti.UI.createWindow({title:a,backgroundColor:"white",navBarHidden:!0});b=Ti.UI.createWebView({content:"<html><head></head><body>"+b+"</body><html>"});a.add(b);a.navBarHidden=c&&d?!1:!0;return a}module.exports=CustomPageWindow;

@@ -1,0 +1,30 @@
+﻿<table width="100%" border="0" cellspacing="1" cellpadding="1">
+  <tr class="siteLinkTitle" >
+    <td>Introduction</td>
+    <td>Features</td>
+    <td>Members Zone</td>
+  </tr>
+  <tr class="topdown">
+    <td><ul>
+    	<?php
+      	echo "<li><a href='/".$path_prefix."intro.php'>". lang("SITE_LINKS_INTRO") ."</a></li>";
+      	echo "<li><a href='/".$path_prefix."customer.php'>". lang("SITE_LINKS_CUSTOMER") ."</a></li>";
+      	echo "<li><a href='/".$path_prefix."latestnews.php'>". lang("SITE_LINKS_LATESTNEWS") ."</a></li>";
+      ?>
+    </ul>      </td>
+    <td><ul>
+    	<?php
+        echo "<li><a href='/".$path_prefix."plans.php'>". lang("SITE_LINKS_PLANS") ."</a></li>";
+        echo "<li><a href='/".$path_prefix."featurematrix.php'>". lang("SITE_LINKS_FEATUREMATRIX") ."</a></li>";
+        //echo "<li><a href='/".$path_prefix."modules.php'>". lang("SITE_LINKS_MODULES") ."</a></li>";
+        echo "<li>". lang("SITE_LINKS_MODULES") ."</li>";
+			?>
+    </ul>      </td>
+    <td><ul>
+    	<?php
+	      echo "<li><a href='/".$path_prefix."usr_login.php'>". lang("SITE_LINKS_LOGIN") ."</a></li>";
+			?>
+      <li>Tutorials</li>
+    </ul></td>
+  </tr>
+</table>

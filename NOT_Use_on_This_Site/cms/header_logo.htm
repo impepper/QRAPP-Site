@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+<link href="css/custom/header_logo.css" rel="stylesheet" type="text/css" />
+<style type="text/css"></style>
+<link rel="stylesheet" type="text/css" href="css/javan-jbar/jbar.css"/>
+<style type="text/css">
+#apDiv1 {
+	position: absolute;
+	left: 15%;
+	top: 95px;
+	height: 38px;
+	z-index: 3;
+	right: 15%;
+}
+</style>
+<script type="text/javascript" src="js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/javan-jbar/jquery.jbar.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('.jbar').jbar();
+//	$(".jbar li a").click(function(){
+//		//alert($(this).prop('href'))
+//		$(".jbar li a[name='backend']").prop('href','login.htm')
+//	})
+});
+</script>
+
+
+</head>
+<body style="/* [disabled]background-color: #CCC; */">
+<div id="apDiv_logo"><span style="font-size: 36px">APP-LE</span> <span style="font-style: italic">build your mobile apps in realtime</span></div>
+    <div id="apDiv_loginstatus" style="font-size: 14px; font-family: Tahoma, Geneva, sans-serif; text-align: right;"><!--Already a registered user? &nbsp;&nbsp; <a href="login.htm" target="Frame_content">Log In</a>--></div>  
+
+<div id="apDiv1" class="mainmenu">
+	<ul class="jbar">
+		<li>
+			<a name="about" href="project_news.htm" target="Frame_content">關於 App-LE(Lite)</a>
+			<ul>
+				<li><a href="project_intro.htm" target="Frame_content">計畫緣起</a></li>
+                <li><a href="project_goals.htm" target="Frame_content">計畫目的</a></li>
+			</ul>
+		</li>
+		<li>
+			<a name="module" href="modules_intro.htm" target="Frame_content">模組介紹</a>
+		</li>
+		<li>
+			<a name="backend" href="login.htm" target="Frame_content">後端資料管理</a>
+		</li>      
+		<li>
+			<a name="contact" href="contact.htm" target="Frame_content">聯繫方式</a>
+		</li>        
+	</ul>
+</div>
+
+</body>
+</html>

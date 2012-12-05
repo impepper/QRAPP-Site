@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>mCMS</title>
+
+
+<!-- CSS for jQuery UI 1.8.23 -->
+<link href="../../styles/smoothness_1.8.23/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"> </script>
+<script src="../../scripts/jquery/jquery-ui-1.8.23.custom.min.js"> </script>
+
+<!-- js for ACS -->
+<script type="text/javascript" src="../../scripts/cocoafish/cocoafish-1.2.min.js"></script>
+
+<script type="text/javascript">
+/*
+$.getScript("../fnc_main.js", function(){
+   alert("Script loaded and executed.");
+   // here you can use anything you defined in the loaded script
+});
+*/
+var sdk = new Cocoafish('LGw5sY0z72d1Qlced8dN2N8K3zKAcwo9')  //Develop
+//var sdk = new Cocoafish('n7MsybAWCWZApQv1MKLVKTwAK6X65aPs')  //Product
+
+var user_account = 'chihong.lin@gmail.com';
+var user_password= 'hala0204';
+
+currentpassword = user_password
+
+
+
+function callback(data) {
+  if(data) {
+    if(data.meta) {
+      var meta = data.meta;
+      if(meta.status == 'ok' && meta.code == 200 && meta.method_name == 'updateObject') {
+			}	
+    }
+  }
+}
+</script>
+
+</head>
+<body>
+<input type="button" id="runscript_set_windows_visible" value="Set All Win Objects to Visiable (win_published=True) " />
+<input type="button" id="runscript_set_table_visible" value="Set All Table Objects to Visiable (win_published=True) " />
+
+<script type="text/javascript">
+
+$('#runscript_set_windows_visible').button().click( function(){
+				sdk.sendRequest('users/login.json', 'POST', {login:user_account, password:user_password}, function(responseData) {
+					if (responseData && responseData.meta && responseData.meta.code == 200) {
+						var user = responseData.response.users[0];
+						var id= user.id;
+					
+						var data = {
+							per_page:200,
+							order: '-win_id',
+							where: '{"win_id":{"$ne":0}}',
+							//","win_id":{"$ne":0}
+						};
+						
+						sdk.sendRequest('objects/windows/query.json', 'GET', data, function (responseData) {
+									if (responseData && responseData.meta && responseData.meta.code == 200) {
+									itemcount = responseData.response.windows.length-1
+													
+									for (var i=itemcount; i>=0;i--){
+										var custome_window=responseData.response.windows[i];
+
+										var data = {
+											id:custome_window.id,
+											fields: '{"win_published": true}'
+											//fields: '{"acl_id": ""}'
+											};
+										
+										sdk.sendRequest('objects/windows/update.json', 'PUT', data, callback);
+									};			  				 	
+								} else {
+									alert(responseData.meta.message);
+								}
+						})
+						
+					} else {
+								alert(responseData.meta.message);
+					}
+				 
+				});
+		}
+)
+
+$('#runscript_set_table_visible').button().click( function(){
+				sdk.sendRequest('users/login.json', 'POST', {login:user_account, password:user_password}, function(responseData) {
+					if (responseData && responseData.meta && responseData.meta.code == 200) {
+						var user = responseData.response.users[0];
+						var id= user.id;
+					
+						var data = {
+							per_page:200,
+							order: '-win_id',
+							where: '{"win_id":{"$ne":0}}',
+							//","win_id":{"$ne":0}
+						};
+						
+						sdk.sendRequest('objects/table/query.json', 'GET', data, function (responseData) {
+							
+								if (responseData && responseData.meta && responseData.meta.code == 200) {
+
+									itemcount = responseData.response.table.length-1
+									
+									for (var i=itemcount; i>=0;i--){
+										var custome_window=responseData.response.table[i];
+										var data = {
+											id:custome_window.id,
+											fields: '{"win_published": true}'
+											//fields: '{"acl_id": ""}'
+											};
+										
+										sdk.sendRequest('objects/table/update.json', 'PUT', data, callback);
+									};			  				 	
+								} else {
+									alert(responseData.meta.message);
+								}
+						})
+						
+					} else {
+								alert(responseData.meta.message);
+					}
+				 
+				});
+		}
+)
+//dupelicate all objects from default UI
+$('#runscript_set_table_visible').button().click( function(){
+				sdk.sendRequest('users/login.json', 'POST', {login:user_account, password:user_password}, function(responseData) {
+					if (responseData && responseData.meta && responseData.meta.code == 200) {
+						var user = responseData.response.users[0];
+						var id= user.id;
+					
+						var data = {
+							per_page:200,
+							order: '-win_id',
+							where: '{"win_id":{"$ne":0}}',
+							//","win_id":{"$ne":0}
+						};
+						
+						sdk.sendRequest('objects/table/query.json', 'GET', data, function (responseData) {
+							
+								if (responseData && responseData.meta && responseData.meta.code == 200) {
+
+									itemcount = responseData.response.table.length-1
+									
+									for (var i=itemcount; i>=0;i--){
+										var custome_window=responseData.response.table[i];
+										var data = {
+											id:custome_window.id,
+											fields: '{"win_published": true}'
+											//fields: '{"acl_id": ""}'
+											};
+										
+										sdk.sendRequest('objects/table/update.json', 'PUT', data, callback);
+									};			  				 	
+								} else {
+									alert(responseData.meta.message);
+								}
+						})
+						
+					} else {
+								alert(responseData.meta.message);
+					}
+				 
+				});
+		}
+)
+
+</script>
+</body>
+</html>
